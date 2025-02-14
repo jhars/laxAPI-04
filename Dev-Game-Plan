@@ -37,6 +37,7 @@ npm i @babel/core @babel/node @babel/preset-env
 Next Steps:
 ############
 - push/deploy to Heroku (get DB to work)
+	npm install -g sequelize-cli
 - experiement w/ GraphQL
 - Players DB	
 	+ new models for players (do i need migrations?)
