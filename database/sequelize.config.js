@@ -15,7 +15,7 @@ const { DB_HOST, DATABASE_URL } = process.env
   // },
 module.exports = {
   production: {
-   use_env_variable: DATABASE_URL,
+   use_env_variable: 'DATABASE_URL',
    host: DB_HOST,
    port:'5432',
    dialect: 'postgres',
