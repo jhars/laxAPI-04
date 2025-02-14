@@ -1,20 +1,32 @@
 require('dotenv').config();
 const process = require('process');
-
+const { DB_HOST, DATABASE_URL } = process.env
+  // production: {
+  //  use_env_variable: 'DATABASE_URL',
+  //  dialect: 'postgres',
+  //  protocol: 'postgres',
+  //  ssl: true,
+  //  dialectOptions: {
+  //    ssl: {
+  //     require: true,
+  //     rejectUnauthorized: false,
+  //    },
+  //  },
+  // },
 module.exports = {
   production: {
-   use_env_variable: 'DATABASE_URL',
+   use_env_variable: DATABASE_URL,
+   host: DB_HOST,
+   port:'5432',
    dialect: 'postgres',
-   protocol: 'postgres',
-   ssl: true,
    dialectOptions: {
-     ssl: {
-      require: true,
-      rejectUnauthorized: false,
-     },
-   },
+       ssl: {
+         require: true,
+         rejectUnauthorized: false
+       }
+     }
   },
-  
+
   development: {
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
