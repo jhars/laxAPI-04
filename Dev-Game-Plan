@@ -32,6 +32,48 @@ Babel:
 npm i @babel/core @babel/node @babel/preset-env
 ... deleted .babelrc
 - - - - - - 
+Heroku Steps:
+
+- This was critically important command to run:
+	npm install -g sequelize-cli
+
+- Addeed to sequelize.config.js file
+```
+production: {
+ use_env_variable: 'DATABASE_URL'
+},
+```
+
+- This had to be added to models/index.js for it to work:
+```
+if (config.use_env_variable) {
+  // Required by Heroku - 'production' DB
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      }
+    }
+  );
+
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+      console.error('Unable to connect to the database:', err);
+    });
+    //END- Heroku Required Block
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+```
+
+
 ####################################################
 ####################################################
 Next Steps:

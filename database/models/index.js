@@ -10,20 +10,8 @@ const config = require(__dirname + '/../sequelize.config.js')[env];
 const db = {};
 
 let sequelize;
-// if (config.use_env_variable) {
-//   // sequelize = new Sequelize(process.env[config.use_env_variable], config);
-//   console.log("Before Sequelize Instantiation")
-//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-//   console.log(config)
-//   console.log(config.use_env_variable)
-//   console.log("After Sequelize Instantiation")
-// } else {
-//   sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
-if (env == 'production') {
-  // From Heroku - 'productionr' if block 
-  // required to conect to Database
-  
+if (config.use_env_variable) {
+  // Required by Heroku - 'production' DB
   sequelize = new Sequelize(process.env.DATABASE_URL, {
       dialect: 'postgres',
       dialectOptions: {
@@ -43,10 +31,10 @@ if (env == 'production') {
     .catch(err => {
       console.error('Unable to connect to the database:', err);
     });
+    //END- Heroku Required Block
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
-
 
 fs
   .readdirSync(__dirname)
