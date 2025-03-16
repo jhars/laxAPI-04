@@ -17,13 +17,11 @@ const context = async () => ({ db });
 const server = new ApolloServer({
   typeDefs: typeDefs,
   resolvers: resolvers,
-  context: context,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 await server.start();
 
 app.use(
-  "/graphql",
   cors(),
   bodyParser.json(),
   expressMiddleware(server, { context }),

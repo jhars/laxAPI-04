@@ -3,4 +3,9 @@ export default `#graphql
     id: ID
     title: String
   }
+
+  type Team {
+    id: ID
+    name: String
+  }
 `;

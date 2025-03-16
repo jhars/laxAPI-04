@@ -14,10 +14,9 @@ const context = async () => ({ db });
 const server = new ApolloServer({
     typeDefs: typeDefs,
     resolvers: resolvers,
-    context: context,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 await server.start();
-app.use("/graphql", cors(), bodyParser.json(), expressMiddleware(server, { context }));
+app.use(cors(), bodyParser.json(), expressMiddleware(server, { context }));
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 console.log(`🚀 Server ready at http://localhost:4000`);
