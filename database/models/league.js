@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   League.init({
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+    },
     title: DataTypes.STRING
   }, {
     sequelize,

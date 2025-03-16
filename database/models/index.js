@@ -61,3 +61,5 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+// export default db;
+// exports.db = db
