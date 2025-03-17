@@ -109,10 +109,10 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "exclude": [
-    "./database/**",
-    "./src/index.mts",
-    "./src/**/index.mts",
-    "./src/schema/mutations.mts",
-    "./src/schema/queries.mts",
+    // "./database/**",
+    // "./src/index.mts",
+    // "./src/**/index.mts",
+    // "./src/schema/mutations.mts",
+    // "./src/schema/queries.mts",
   ]
 }
